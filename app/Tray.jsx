@@ -12,7 +12,7 @@ export default function Tray({ setSelectRestaurant }){
     return(
 
         <View style={styles.tray}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={choose} style={styles.button}>
                 <Text style={styles.buttonText}>Shuffle</Text>
             </TouchableOpacity>
         </View>

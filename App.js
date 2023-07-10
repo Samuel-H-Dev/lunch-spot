@@ -14,7 +14,7 @@ export default function App() {
       <Text style={styles.Header}>
         Lunch Spot
       </Text>
-      <RestList />
+      <RestList selectRestaurant={selectRestaurant}/>
       <StatusBar style="auto" />
     </View>
     <Tray setSelectRestaurant={setSelectRestaurant}/>

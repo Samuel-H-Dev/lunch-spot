@@ -4,14 +4,24 @@ import RestCard from "./RestCard"
 
 
 
-export default function RestList(){
+export default function RestList({ selectRestaurant }){
     const [restaurants, setRestaurants] = useState()
+    const [chosenRestaurant, setChosenRestaurant] = useState()
     useEffect(() => {
         fetch('https://api.bocacode.com/api/restaurants')
         .then(res => res.json())
         .then(setRestaurants)
         .catch(alert)
     },[])
+
+    useEffect(() => {
+        if(selectRestaurant > 0){
+            const index = Math.floor(selectRestaurant * restaurants.length)
+            setChosenRestaurant(restaurants[index])
+        } else {
+            setChosenRestaurant()
+        }
+    }, [selectRestaurant])
 
 
     return(
@@ -20,8 +30,10 @@ export default function RestList(){
         <ScrollView style={styles.scrollingList}>
             {!restaurants
             ? <Text style={styles.loadingText}>Loading...</Text>
-            : restaurants.map( restaurant => (
-            <RestCard key={restaurant._id} restaurant={restaurant} />
+            : (chosenRestaurant)
+                ? <RestCard key={chosenRestaurant._id} restaurant={chosenRestaurant} />
+                : restaurants.map( restaurant => (
+                <RestCard key={restaurant._id} restaurant={restaurant} />
             ))
         }
         </ScrollView>
@@ -39,8 +51,7 @@ const styles = StyleSheet.create({
 
     },
     scrollingList: {
-        borderBottomWidth: 1,
-        borderColor: 'pink',
+       
         width: '90%',
         marginTop: 15,
         marginBottom: 20,
