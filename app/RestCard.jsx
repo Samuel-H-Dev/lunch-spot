@@ -16,16 +16,30 @@ const styles =StyleSheet.create({
         width: '100%',
         height: 200,
         borderRadius: 6,
+        borderWidth: 3,
+        borderColor: '#a3a3a3',
+        borderStyle: "solid",
     },
     card: {
         padding: 8,
         margin: 8, 
+        paddingVertical: 12,
         borderRadius: 12, 
-        backgroundColor: '#e9eeff',
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 7,
+        // },
+        // shadowOpacity: 0.28,
+        // shadowRadius: 5.51,
+        
+        // elevation: 15,
     },
     title: {
         color: '#203040',
-        fontSize: 28,
-        textAlign: 'center'
+        fontSize: 20,
+        fontWeight: 700,
+        textAlign: 'center',
+        marginTop: 12,
     }
 })
