@@ -7,11 +7,22 @@ export default function RestCard({ restaurant }){
         <View style={styles.card}>
             <Image src={restaurant.photo_url} style={styles.image}/>
             <Text style={styles.title}>{restaurant.name}</Text>
+            {
+                (restaurant?.rating.length > 0)
+                ? <Text style={styles.rating}>{"⭐️".repeat(restaurant.rating)} </Text> 
+                : null
+                }
+
         </View>
     )
 }
 
 const styles =StyleSheet.create({
+    rating: {
+        textAlign: "center",
+        fontSize: 20,
+ 
+    },
     image: {
         width: '100%',
         height: 200,
@@ -24,7 +35,9 @@ const styles =StyleSheet.create({
         padding: 8,
         margin: 8, 
         paddingVertical: 12,
-        borderRadius: 12, 
+         
+        borderTopColor: "black",
+        borderTopWidth: 3,
         // shadowColor: "#000",
         // shadowOffset: {
         //     width: 0,
@@ -41,5 +54,6 @@ const styles =StyleSheet.create({
         fontWeight: 700,
         textAlign: 'center',
         marginTop: 12,
+
     }
 })
